@@ -1,12 +1,26 @@
 
 function renderRestaurants(restaurants) {
-    // HINT: You can use <img /> tags that point to these playing card images: 
-    // https://commons.wikimedia.org/wiki/Category:SVG_playing_cards
-    return `
-        <div class="text-center mt-5">
-            <code>${JSON.stringify(restaurants)}</code>
-        </div>
-    `
+    var renderRestaurantsHTML = restaurants.map(renderRestaurant);
+
+    var theHTML = `<div class="restaurant">
+                        ${renderRestaurantsHTML.join("")}
+                    </div>
+    `;
+    return theHTML;
+}
+
+// Steps we did for this
+// 1. Write out static HTML based on example or design
+// 2. Style the HTML so it looks correct in the browser
+// 3. Break apart the rendering function into new functions for parts the repeat
+// 4. Hook up the data into the template
+
+function renderRestaurant(restaurant) {
+    return `<div class="rounded">
+        <h1>${restaurant.name}</h1>
+        <h3>${restaurant.type}</h3>
+        <div class="price">${'$'.repeat(restaurant.priceRating)}</div>
+       </div>`;
 }
 
 function restaurants() {
@@ -19,7 +33,7 @@ function restaurants() {
             priceRating: 1
         },
         {
-            name: "Gunshow",
+            name: "Aubrey's Pub",
             type: "Date Night Dining",
             priceRating: 5
         },
