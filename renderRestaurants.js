@@ -1,4 +1,3 @@
-
 function renderRestaurants(restaurants) {
     var renderRestaurantsHTML = restaurants.map(renderRestaurant);
 
@@ -26,8 +25,7 @@ function renderRestaurant(restaurant) {
 function restaurants() {
     var content = document.getElementById('content');
 
-    var restaurantsAbstraction = [
-        {
+    var restaurantsAbstraction = [{
             name: "McDonald's",
             type: "Fast Food",
             priceRating: 1

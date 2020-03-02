@@ -1,18 +1,21 @@
-
 function renderPokerHand(pokerHand) {
     // HINT: You can use <img /> tags that point to the card images in the /cards folder
     return `
-        <div class="text-center mt-5">
-            <code>${JSON.stringify(pokerHand)}</code>
-        </div>
+    ${pokerHand.map(renderPoker).join('')}
     `
+}
+
+function renderPoker(poker) {
+
+    return ` 
+        <img src="cards/${poker.value}${poker.suit}.png" style = "width:100px; height:150px"/>
+        `
 }
 
 function pokerHand() {
     var content = document.getElementById('content');
 
-    var pokerHandAbstraction = [
-        {
+    var pokerHandAbstraction = [{
             value: "K",
             suit: "C"
         },

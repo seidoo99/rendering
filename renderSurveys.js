@@ -1,8 +1,7 @@
-
 function renderSurveys(surveys) {
     return `
         <div class="text-center mt-5">
-            <code>${JSON.stringify(surveys)}</code>
+            
         </div>
     `
 }
@@ -10,11 +9,9 @@ function renderSurveys(surveys) {
 function surveys() {
     var content = document.getElementById('content');
 
-    var surveysAbstraction = [
-        {
+    var surveysAbstraction = [{
             title: "Movie Goer Survey",
-            fields: [
-                {
+            fields: [{
                     label: "Have you gone to the movies in the last month?",
                     type: "radio",
                     options: [
@@ -38,8 +35,7 @@ function surveys() {
         },
         {
             title: "DigitalCrafts Survey",
-            fields: [
-                {
+            fields: [{
                     label: "Are you currently enrolled in a DigitalCrafts class?",
                     type: "radio",
                     options: [

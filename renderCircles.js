@@ -1,4 +1,3 @@
-
 function renderCircles(cs) {
     // HINT: You probably need to write a for loop!
     //       Or, if you're feeling fancy, use .map() 
@@ -23,8 +22,7 @@ function renderCircle(c) {
 function circles() {
     var content = document.getElementById('content');
 
-    var circlesAbstraction = [
-        {
+    var circlesAbstraction = [{
             radius: 50,
             color: "#FF00FF"
         },
