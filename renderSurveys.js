@@ -1,9 +1,28 @@
 function renderSurveys(surveys) {
     return `
-        <div class="text-center mt-5">
-            
+    <div>
+    ${surveys.map(renderSurvey).join('')}
+    </div>
+ `
+}
+
+function renderSurvey(survey) {
+
+    return ` 
+        <h2>${survey.title}</h2>
+        <div>
+        ${survey.fields.map(function(feild){
+
+            return `
+           <h3>${feild.label}</h3> 
+           <input type="${feild.type}" id="radio">
+           <label for="radio">${feild.options ? feild.options : ''}</label>
+            `
+        })}
         </div>
-    `
+        
+        <button type="submit" class="btn btn-primary render-button mt-1">${survey.submitButtonText}</button>
+        `
 }
 
 function surveys() {
@@ -55,3 +74,26 @@ function surveys() {
     content.innerHTML = renderSurveys(surveysAbstraction);
 
 }
+
+
+
+// function renderSurvey1(survey1) {
+
+//     return ` 
+//         <h2>${survey1.title}</h2>
+//         ${survey1.fields.map(function(field){
+//             return`
+//             <div>
+//             ${field.label}
+//             ${field.type}
+//             ${field.options.map(function(option){
+//                 return`
+//                 ${option.option ? option.option : ''}
+//                 `
+//             }).join('')}
+//             </div>
+//             `
+//         })}
+//         ${survey.submitButtonText}
+//         `
+// }

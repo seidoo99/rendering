@@ -8,7 +8,8 @@ function renderPokerHand(pokerHand) {
 function renderPoker(poker) {
 
     return ` 
-        <img src="cards/${poker.value}${poker.suit}.png" style = "width:100px; height:150px"/>
+        <img class="poker" src="cards/${poker.value}${poker.suit}.png" style = "width:100px; height:150px">
+        <br>
         `
 }
 

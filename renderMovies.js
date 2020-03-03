@@ -9,16 +9,21 @@ function renderMovies(movies) {
 
 function renderMovie(movie) {
     return `
-        <div clss="leftDiv">
-        <img class="image-photo" src ="${movie.poster}">
+
+        <div class="leftDiv">
+        <img class="image-photo" src ="${movie.poster}" height="300px" width="230px">
         </div>
         <div class="rightDiv" >
         <h2>${movie.title}</h2>
         <span>${movie.year}</span>
-        <h2>${movie.imdbID}</h2>
+        <h3>${movie.imdbID}</h3>
         <p>${movie.imdbRating}/10</p>
-        <p>${movie.rottenTomatoesRating*100}%</p>
-            </div>`
+        <h3>Rotten Tomatoes:</h3>
+        <p> ${movie.rottenTomatoesRating*100}%</p>
+            </div>
+            
+            `
+
 }
 
 function movies() {

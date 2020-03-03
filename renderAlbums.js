@@ -31,7 +31,7 @@
 
 function renderAlbums(albums) {
     return `
-    ${albums.map(renderAlbum).join('')}
+   <div> ${albums.map(renderAlbum).join('')}</div>
  `
 }
 
@@ -39,15 +39,25 @@ function renderAlbum(album) {
 
     return ` 
         <h2>${album.artist}</h2
+        <br>
+        <hr>
         ${album.albums.map(function(cover){
           return `
-          <img src="${cover.albumCover}"> 
+          <div>
+          <div class="album">
+          <img class="albumCover" src="${cover.albumCover}" height="50" width="50">
+          </div>
+          <h4 class="cover">${cover.title}</h4>
+          </div>
           ${cover.songs.map(function(song){
               return`
-              ${song.title}
-              ${song.length}
+              <ul>
+              <hr>
+             <li>${song.title}<span class="length">${song.length}</span></li> 
+              </ul>
               `
-          })}
+          }).join('')}
+        
           `
         })}
         `
