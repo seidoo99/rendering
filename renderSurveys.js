@@ -1,28 +1,60 @@
 function renderSurveys(surveys) {
+    var surveyHtmlArray = surveys.map(function(e) {
+            return renderSingleSurvey(e);
+        })
+        // We need to iterate over the surveys variable
+        // and push the survey titles into the surveyHtmlArray
+        // for (var i = 0; i < surveys.length; i++) {
+        // surveyHtmlArray.push(renderSingleSurvey(surveys[i]));
+        // surveyHtmlArray.push(renderSingleSurvey(surveys[i]));
+        // }
+
     return `
-    <div>
-    ${surveys.map(renderSurvey).join('')}
-    </div>
- `
+        <div class="text-center mt-5">
+            ${surveyHtmlArray.join('')}
+            <!--<code>${JSON.stringify(surveyHtmlArray)}</code>-->
+        </div>
+    `
 }
 
-function renderSurvey(survey) {
+function renderSingleSurvey(survey) {
+    // Render a single survey object 
+    var fieldsHtmlArray = [];
+    fieldsHtmlArray = survey.fields.map(function(e) {
+        return renderSurveyFields(e);
+    })
 
-    return ` 
-        <h2>${survey.title}</h2>
-        <div>
-        ${survey.fields.map(function(feild){
-
-            return `
-           <h3>${feild.label}</h3> 
-           <input type="${feild.type}" id="radio">
-           <label for="radio">${feild.options ? feild.options : ''}</label>
-            `
-        })}
+    return `
+        <h1>${survey.title}</h1>
+        <div class="survey-questions">
+            ${fieldsHtmlArray.join('')}
         </div>
-        
-        <button type="submit" class="btn btn-primary render-button mt-1">${survey.submitButtonText}</button>
-        `
+        <button type="button" class="btn btn-primary render-button mt-1">${survey.submitButtonText}</button>
+    `
+}
+
+function renderSurveyFields(fields) {
+    // could maybe use map method on fields array with template literals and divs
+    var optionsHtmlArray = [];
+    if (fields.options) {
+        optionsHtmlArray = fields.options.map(function(option) {
+            return renderSurveyFieldOptions(option);
+        })
+    }
+    return `
+    
+        <div class="field-options">
+        ${optionsHtmlArray.join('')}
+        </div>
+    `
+}
+
+function renderSurveyFieldOptions(options) {
+    return `
+        <div class="radio">
+  <label><input type="${feilds.type}" name="optradio" checked>${options}</label>
+</div>
+    `
 }
 
 function surveys() {
@@ -74,26 +106,3 @@ function surveys() {
     content.innerHTML = renderSurveys(surveysAbstraction);
 
 }
-
-
-
-// function renderSurvey1(survey1) {
-
-//     return ` 
-//         <h2>${survey1.title}</h2>
-//         ${survey1.fields.map(function(field){
-//             return`
-//             <div>
-//             ${field.label}
-//             ${field.type}
-//             ${field.options.map(function(option){
-//                 return`
-//                 ${option.option ? option.option : ''}
-//                 `
-//             }).join('')}
-//             </div>
-//             `
-//         })}
-//         ${survey.submitButtonText}
-//         `
-// }
