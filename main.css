@@ -107,3 +107,11 @@ li:before {
     display: flex;
     justify-content: center;
 }
+
+span {
+    font-size: 16px;
+    /* font-style: italic; */
+    /* margin-top: 20px; */
+    padding-left: 10px;
+    /* display: inline-block; */
+}
