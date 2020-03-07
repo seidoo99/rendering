@@ -36,12 +36,7 @@ function renderSingleSurvey(survey) {
 function renderSurveyFields(fields) {
     // could maybe use map method on fields array with template literals and divs
     var optionsHtmlArray = [];
-    if (fields.type === 'text') {
-        return `
-        <textarea id="w3mission" rows="4" cols="50"></textarea>
-       
-        `
-    }
+
     if (fields.options) {
         optionsHtmlArray = fields.options.map(function(option) {
             return renderSurveyFieldOptions(option);
@@ -49,7 +44,7 @@ function renderSurveyFields(fields) {
     }
     return `
         <h3>${fields.label}</h3>
-       
+        ${fields.type == 'text' ? ` <textarea id="w3mission" rows="4" cols="50"></textarea>`: ''}
         <div class="field-options">
         ${optionsHtmlArray.join('')}
         </div>
